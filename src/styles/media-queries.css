@@ -1,12 +1,5 @@
 @media screen and (max-width: 1015px) {
-    .offer__list-item {
-<<<<<<< HEAD
-        grid-template-columns: 1fr 1fr;
-      }
-
-}
-=======
-      grid-template-columns: 1fr 1fr;
-    }
+  .offer__list-item {
+    grid-template-columns: 1fr 1fr;
   }
->>>>>>> c4133566187bfcab0c98bdac5b6cf5f58014c9b6
+}

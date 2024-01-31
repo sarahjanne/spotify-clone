@@ -1,17 +1,8 @@
 :root{
-<<<<<<< HEAD
-    /*FONTE - declaração de váriais no css*/
-    --font-dm-sans: "DM Sans", sans serif;
-
-
-    /*CORES - declaração de váriais */
-    -bg-icon:#131313;
-=======
     /* FONT */
     --font-dm-sans:"DM Sans", sans-serif;
 
     /* COLORS */
     --bg-icon:#131313;
->>>>>>> c4133566187bfcab0c98bdac5b6cf5f58014c9b6
     --bg-arrow-color:rgba(0,0,0,7)
 }
