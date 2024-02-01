@@ -37,12 +37,26 @@ body{
 .sidebar ul li{
     padding: 10px 0;
 }
-
+@keyframes liHover {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 .sidebar nav ul li a{
     color: #b3b3b3;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
+}
+.sidebar nav ul li a:hover{
+    color: #fff;
+    animation: buttonHover 0.2s ease;
 }
 
 .library{
@@ -62,7 +76,17 @@ body{
     display:flex;
     justify-content: space-between;
 }
-
+@keyframes buttonHover {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 .library .library__button{
     display:flex;
     margin-right: 10px;
@@ -83,6 +107,11 @@ body{
     color:#b3b3b3;
     margin-right: 10px;
     padding-right:8px;
+}
+.library .library__button .fa:hover, .library__button:hover, .fa-plus:hover{
+    color:#FFF;
+    cursor: pointer;
+    animation: buttonHover 0.3s ease;
 }
 
 .library .library__content .fa-plus{

@@ -29,6 +29,18 @@
   margin-right: 1.25rem;
 }
 
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .arrow-left,
 .arrow-right {
   display: flex;
@@ -40,9 +52,13 @@
   background-color:var(--bg-arrow-color);
   border-radius: 50%;
   border: none;
-  cursor: pointer;
+ 
 }
-
+.arrow-left:hover,
+.arrow-right:hover {
+  cursor: pointer;
+  animation: buttonHover 0.1s ease;
+}
 .header__login {
   display: flex;
   align-items: center;
@@ -75,7 +91,17 @@
   white-space: nowrap;
   outline: none;
 }
-
+@keyframes buttonHover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .header__login .subscribe {
   color: #a7a7a7;
   font-size: 16px;
@@ -83,7 +109,10 @@
   background-color: transparent;
   margin-right: 32px;
 }
-
+.header__login .subscribe:hover{
+  cursor: pointer;
+  animation: buttonHover 0.5s ease;
+}
 .header__login .login {
   width: 100px;
   height: 48px;
@@ -91,6 +120,10 @@
   font-size: 16px;
   font-weight: 700;
   border-radius: 40px;
+}
+.header__login .login:hover{
+  cursor: pointer;
+  animation: buttonHover 0.5s ease;
 }
 
 /* PLAYLIST */
