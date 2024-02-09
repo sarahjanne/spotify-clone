@@ -29,7 +29,7 @@
   margin-right: 1.25rem;
 }
 
-@keyframes buttonClick {
+@keyframes buttonHover {
   0% {
     transform: scale(1);
   }
