@@ -17,6 +17,7 @@
   border-radius: 8px;
   background-color: #121212;
   padding: 12px;
+  
 }
 
 .header__navigation .navigation {
@@ -25,24 +26,21 @@
   align-items: center;
 }
 
-.header__navigation .navigation .arrow-left {
+.header__navigation .navigation .fa-chevron-left {
   margin-right: 1.25rem;
 }
 
-@keyframes buttonHover {
+@keyframes header__navigationHover {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
-
-.arrow-left,
-.arrow-right {
+.fa-chevron-left,
+.fa-chevron-right {
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,12 +50,14 @@
   background-color:var(--bg-arrow-color);
   border-radius: 50%;
   border: none;
- 
-}
-.arrow-left:hover,
-.arrow-right:hover {
   cursor: pointer;
-  animation: buttonHover 0.1s ease;
+
+}
+.fa-chevron-left:hover,
+.fa-chevron-right:hover {
+  animation: languages_buttonHover 0.5s ease; 
+  transform: scale(1.1);
+  color:#FFF;
 }
 .header__login {
   display: flex;
@@ -91,15 +91,12 @@
   white-space: nowrap;
   outline: none;
 }
-@keyframes buttonHover {
+@keyframes header_loginsubscribeHover {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
 .header__login .subscribe {
@@ -107,23 +104,28 @@
   font-size: 16px;
   font-weight: 700;
   background-color: transparent;
+  cursor: pointer;
   margin-right: 32px;
 }
 .header__login .subscribe:hover{
-  cursor: pointer;
-  animation: buttonHover 0.5s ease;
+  animation: header_loginsubscribeHover 0.3s ease;
+  transform: scale(1.1);
+  color:#fff;
 }
 .header__login .login {
   width: 100px;
   height: 48px;
   color: #000;
+  background-color: #FFF;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 700;
   border-radius: 40px;
 }
 .header__login .login:hover{
-  cursor: pointer;
-  animation: buttonHover 0.5s ease;
+  animation: header_loginsubscribeHover 0.5s ease;
+  transform: scale(1.1);
+  background-color:#d5cccc;
 }
 
 /* PLAYLIST */
@@ -189,6 +191,7 @@ width: 220px;
 height: 200px;
 overflow: hidden;
 border-radius: 8px;
+
 }
 
 .cards span {

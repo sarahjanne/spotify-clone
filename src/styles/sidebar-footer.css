@@ -1,3 +1,24 @@
+/*Animação criada com a seção languages e usada tbm na section_playlist*/
+@keyframes languages_buttonHover {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  /*Animação criada com a seção das listas li e ul dos botões início e buscar */
+  @keyframes liHover {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 body{
     background-color: #000;
     font-family: var(--font-dm-sans);
@@ -37,17 +58,7 @@ body{
 .sidebar ul li{
     padding: 10px 0;
 }
-@keyframes liHover {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+
 .sidebar nav ul li a{
     color: #b3b3b3;
     text-decoration: none;
@@ -56,10 +67,9 @@ body{
 }
 .sidebar nav ul li a:hover{
     color: #fff;
-    animation: buttonHover 0.2s ease;
+    animation: liHover 0.2s ease;
   
 }
-
 .library{
     background-color:#121212;
     border-radius:8px;
@@ -71,23 +81,12 @@ body{
     font-weight: 600;
     font-size:14px;
     margin-top: 10px;
+    cursor: pointer;
 }
-
 .library .library__content{
     display:flex;
     justify-content: space-between;
 }
-@keyframes buttonHover {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
 .library .library__button{
     display:flex;
     margin-right: 10px;
@@ -101,23 +100,24 @@ body{
     text-transform: none;
     padding:20px 10px;
 }
-
-.library .library__button .fa{
-    font-size:20px;
+.library .library__button span .fa{
+    font-family: var(--font-dm-sans);
+    font-size:15px;
     font-weight: 300;
     color:#b3b3b3;
     margin-right: 10px;
     padding-right:8px;
+    
 }
-.library .library__button .fa:hover, .library__button:hover, .fa-plus:hover{
-    color:#FFF;
-    cursor: pointer;
-    animation: buttonHover 0.2s ease;
-   
-}
-
 .library .library__content .fa-plus{
     margin: 24px 10px;
+}
+.library .library__button:hover{
+    color:#FFF;
+    animation: Hover 0.2s ease;
+}
+.library .library__content .fa:hover{
+    color:#FFF;
 }
 
 .section-playlist{
@@ -127,6 +127,7 @@ body{
     gap:20px;
     background-color: #242424;
     color:#b3b3b3;
+    cursor: pointer;
     font-weight: 600;
     font-size: 14px;
     margin: 8px 0;
@@ -171,8 +172,8 @@ body{
 }
 
 .section-playlist__content .section-playlist__button:hover{
-    cursor: pointer;
-    animation: buttonHover 0.2s ease;
+    animation: languages_buttonHover 0.5s ease; 
+    transform: scale(1.1);
 }
 
 .sidebar .cookies{
@@ -195,14 +196,7 @@ body{
 .sidebar .cookies a:hover{
     text-decoration: underline;
 }
-@keyframes languages_buttonHover {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-  }
+
 .languages .languages__button{
     align-items: center;
     background-color: transparent;
