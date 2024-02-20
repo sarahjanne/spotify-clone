@@ -1,6 +1,7 @@
 :root{
     /* FONT */
     --font-dm-sans:"DM Sans", sans-serif;
+    --font-circular-arabic:CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, sans-serif;
 
     /* COLORS */
     --bg-icon:#131313;
