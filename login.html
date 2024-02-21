@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" href="./src/styles/inscreva-login.css">
     <link rel="stylesheet" href="./src/styles/vars.css">
+    <link rel="icon" href="./src/assets/icons/favicon.png" type="image/favicon-icon">
 
 </head>
 <body>
@@ -20,15 +21,52 @@
     </header>
 
     <section>
-        <div class="main">
+        <div class="login-container">
             <h1>Entrar no Spotify</h1>
 
             <div class="account-connect">
-                <button class="a-c-btn" id="g">
+                <button class="a-c-btn">
                     <img src="./src/assets/icons-login/google.png">
                     <span>Continuar com o google</span>
                  </button>
-            </div>
+               
+                 <button class="a-c-btn" >
+                    <img src="./src/assets/icons-login/facebook.png">
+                    <span>Continuar com o facebook</span>
+                 </button>
+                
+                 <button class="a-c-btn">
+                    <img src="./src/assets/icons-login/apple.png">
+                    <span>Continuar com a apple</span>
+                 </button>
+
+                 <button class="a-c-btn">
+                    <span>Continuar com o número de telefone</span>
+                 </button>
+         </div>
+        <br><hr>
+
+        <div class="form-container">
+            <form>
+                <label>Email ou nome de usuário</label>
+                <input class="form-border" type="text" placeholder="Email ou nome de usuário">
+                
+                <label>Senha</label>
+                <input class="form-border "type="text" placeholder="Senha">
+
+                <div class="switch">
+                    <input type="checkbox" id="chk" checked>
+                    <label for="chk" class="switch"></label>
+                    <span class="slider"></span>
+                </div>
+
+                <button>Entrar</button>
+                <a href="#">Você esqueceu sua senha?</a>
+
+
+            </form>
+        </div>
+      
         
         </div>
     </section>
