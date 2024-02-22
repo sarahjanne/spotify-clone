@@ -61,7 +61,13 @@ section div.login-container h1{
     border-color: #f9f9f9;
     color: #fdfcfc;
 }
-
+.account-connect a{
+    color:#878787;
+}
+.account-connect a:hover{
+    border-color: #f9f9f9;
+    color: #fdfcfc;
+}
 .account-connect button img{
     width: 23px;
     float:left;
