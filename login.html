@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Spotify </title>
-    
+
     <link rel="stylesheet" href="./src/styles/inscreva-login.css">
     <link rel="stylesheet" href="./src/styles/vars.css">
     <link rel="icon" href="./src/assets/icons/favicon.png" type="image/favicon-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -28,47 +31,64 @@
                 <button class="a-c-btn">
                     <img src="./src/assets/icons-login/google.png">
                     <span>Continuar com o google</span>
-                 </button>
-               
-                 <button class="a-c-btn" >
+                </button>
+
+                <button class="a-c-btn">
                     <img src="./src/assets/icons-login/facebook.png">
                     <span>Continuar com o facebook</span>
-                 </button>
-                
-                 <button class="a-c-btn">
+                </button>
+
+                <button class="a-c-btn">
                     <img src="./src/assets/icons-login/apple.png">
                     <span>Continuar com a apple</span>
-                 </button>
+                </button>
 
-                 <button class="a-c-btn">
+                <button class="a-c-btn">
                     <span>Continuar com o número de telefone</span>
-                 </button>
-         </div>
-        <br><hr>
+                </button>
+            </div>
+            <br>
+            <hr>
 
-        <div class="form-container">
-            <form>
-                <label>Email ou nome de usuário</label>
-                <input class="form-border" type="text" placeholder="Email ou nome de usuário">
-                
-                <label>Senha</label>
-                <input class="form-border "type="text" placeholder="Senha">
-
-                <div class="switch">
-                    <input type="checkbox" id="chk" checked>
-                    <label for="chk" class="switch"></label>
-                    <span class="slider"></span>
-                </div>
-
-                <button>Entrar</button>
-                <a href="#">Você esqueceu sua senha?</a>
+            <div class="form-container">
+                <form>
+                    <label>Email ou nome de usuário</label>
+                    <input class="form-border" type="text" placeholder="Email ou nome de usuário">
 
 
-            </form>
-        </div>
-      
-        
+                    <label >Senha</label>
+                    <input class="form-border " type="password" id="senha" placeholder="Senha">
+                    <i class="bi-eye-slash-fill" id="btn-senha" onclick="mostrarSenha()"></i>
+
+
+                    <script src="login-eyes.js"></script>
+
+                    <div class="switch">
+                        <input type="checkbox" id="switch" checked>
+                        <label for="switch"> </label>
+                        <span>Lembrar de mim</span>
+                    </div>
+
+
+                    <button>Entrar</button>
+
+
+                    <a href="#">Você esqueceu sua senha?</a>
+                </form>
+            </div>
+
+            <hr>
+
+
+            <div class="last">
+                <span>Não tem uma conta?</span>
+                <a href="#">Inscrever-se no spotify</a>
+            </div>
+
+
+
         </div>
     </section>
 </body>
+
 </html>
