@@ -63,6 +63,7 @@ section div.login-container h1{
 }
 .account-connect a{
     color:#878787;
+    text-decoration: none;
 }
 .account-connect a:hover{
     border-color: #f9f9f9;
@@ -78,12 +79,12 @@ section div.login-container h1{
     top: 3px;
 }
 section div.login-container hr{
-    margin: 32px 100px;
+    margin: 15px 100px;
     border-right: none;
     border-bottom: none;
     border-left:none;
     border-image: initial;
-    border-top: 1px solid rgb(41,41,41);
+    border-top: 2px solid rgb(87,87,87);
 }
 .form-container{
     display:flex;
@@ -115,16 +116,15 @@ section div.login-container hr{
 }
 
 .form-container i{
-    font-size: 20px;
-    position: absolute;
-    left: 59%;
+    font-size: 20px; 
+    position:absolute;
     padding: 11px;
     cursor: pointer;
     color: #fff; 
 }
 .form-container .form-border:hover{
-color: #fff;
-border: 1.5px solid #fff;
+    color: #fff;
+    border: 1.5px solid #fff;
 }
 .switch{
     margin:0;
@@ -220,5 +220,26 @@ input#switch{
 }
 .last a{
     color:#fff;
+    text-decoration: underline;
+}
+/*Footer*/
+
+.re-captcha {
+    position:relative;
+    background: linear-gradient(to right, #121212, #090909);
+    padding: 15px 40px;
+    justify-content: space-between;
+}
+
+.re-captcha .recaptcha-title{
+    color: #a7a7a7;
+    padding: 15px 40px;
+    text-align: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+.recaptcha-title a{
+    color:#a7a7a7;
     text-decoration: underline;
 }
