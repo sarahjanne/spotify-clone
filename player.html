@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="capa">
+    <div class="wrapper">
         <div class="top-bar">
             <i class="material-icons">expand_more</i>
             <span>Ouvindo agora</span>
@@ -17,12 +17,12 @@
         </div>
 
         <div class="img-area">
-            <img src="./src/assets/images-areas/caetanoespecial_01.jpeg" alt="">
+            <img src="" alt="">
         </div>
 
         <div class="song-details">
-            <p class="name">Você é Linda</p>
-            <p class="artist">Caetano Veloso, Ivete Sangalo & Gilberto Gil</p>
+            <p class="name">É bom saber</p>
+            <p class="artist">Luma Elpidio</p>
         </div>
 
         <div class="progress-area">
@@ -30,10 +30,12 @@
 
             <div class="timer">
                 <span class="current">0:20</span>
-                <span class="current">4:44</span>
+                <span class="current">4:28</span>
             </div>
         </div>
         
+        <audio id="main-audio" src=""></audio>
+
         <div class="controls">
             <i id="repeat-plist" class="material-icons">repeat</i>
             <i id="prev" class="material-icons">skip_previous</i>
@@ -51,18 +53,58 @@
                     <span>Music list</span>
                 </div>
                 <i id="close" class="material-icons">close</i>
+                
             </div>
             <ul>
                 <li>
                     <div class="row">
-                    <span>Caetano Veloso</span>
-                    <p>Audio Library</p>
+                    <span>Liberta me de Mim</span>
+                    <p>Luma Elpidio</p>
                     </div>
-                    <span class="audio-duration">4:44</span>
+                    <span class="audio-duration">7:57</span>
+                </li>
+                <li>
+                    <div class="row">
+                    <span>Na mesa</span>
+                    <p>Luma Elpidio</p>
+                    </div>
+                    <span class="audio-duration">13:00</span>
+                </li>
+                <li>
+                    <div class="row">
+                    <span>É bom saber</span>
+                    <p>Luma Elpidio</p>
+                    </div>
+                    <span class="audio-duration">4:28</span>
+                </li>
+                <li>
+                    <div class="row">
+                    <span>Te Entreguei Meu Coração</span>
+                    <p>Luma Elpidio</p>
+                    </div>
+                    <span class="audio-duration">7:17</span>
+                </li>
+                <li>
+                    <div class="row">
+                    <span>Teu Amor por mim</span>
+                    <p>Luma Elpidio</p>
+                    </div>
+                    <span class="audio-duration">8:46</span>
+                </li>
+                <li>
+                    <div class="row">
+                    <span>Venho a Ti</span>
+                    <p>Luma Elpidio</p>
+                    </div>
+                    <span class="audio-duration">5:47</span>
                 </li>
              </ul>
         </div>
+       
     </div>
-  
+    
+    <script src="music-list.js"></script>
+    <script src="music-script.js"></script>
+
 </body>
 </html>
