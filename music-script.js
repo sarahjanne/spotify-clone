@@ -8,10 +8,14 @@ mainAudio = wrapper.querySelector("#main-audio"),
 playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
 nextBtn = wrapper.querySelector("#next"),
-progressBar = wrapper.querySelector (".progress-bar"),
-progressArea = wrapper.querySelector (".progress-area");
+progressArea = wrapper.querySelector(".progress-area"),
+progressBar = wrapper.querySelector(".progress-bar");
+musicList = wrapper.querySelector(".music-list"),
+showMoreBtn = wrapper.querySelector("#more-music"),
+hideMusicBtn = musicList.querySelector("#close");
 
-let musicIndex = 1;
+
+let musicIndex = 2;
 
 window.addEventListener("load", ()=>{
     loadMusic(musicIndex); //calling load music function once windows loaded
@@ -124,12 +128,12 @@ if(currentSec <10){ // adding 0 if sec is less than 10
    
 });
 
-//let´s update playing song current time on according to the progress bar width 
+//vamos atualizar o horário atual da música de acordo com a largura da barra de progresso
 
 progressArea.addEventListener("click", (e)=>{
-    let progressWidthval = progressArea.clientWidth; //getting width of progress bar
-    let clickedOffSetX = e.offsetX; //getting offset x value
-    let songDuration = mainAudio.duration; //getting son total duration
+    let progressWidthval = progressArea.clientWidth; //obtendo largura da barra de progresso
+    let clickedOffSetX = e.offsetX; //obtendo offset x value
+    let songDuration = mainAudio.duration; //obtendo duração total da música
 
     mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
     playMusic(); // se a música estiver pausada e o usuário clicar no progressBar 
@@ -137,28 +141,98 @@ progressArea.addEventListener("click", (e)=>{
 
 });
 
-//let's work on repeat, suffle song according to the icon
+//vamos trabalhar na repetição, embaralhe a música de acordo com o ícone
 
 const repeatBtn = wrapper.querySelector("#repeat-plist");
 repeatBtn.addEventListener("click", ()=>{
-    //first we get the innerText of the icon then we'll change accordingly
-    let getText = repeatBtn.innerText; //getting innerText of icon
+    //primeiro obtemos o innerText do ícone e então mudaremos de acordo
+    let getText = repeatBtn.innerText; //Obtendo innerText do icone
 
-    //let's do different changes on different icon click using switch
+    //vamos fazer alterações diferentes em cliques de ícones diferentes usando o switch
     switch(getText){
-        case "repeat": //if this icon is repeat the change it to repeat_one
+        case "repeat": //Se o ícone for repeat altere - o para repeat_one
             repeatBtn.innerText = "repeat_one";
-            repeatBtn.setAttribute("title", "Song looped");
+            repeatBtn.setAttribute("title", "Música em loop");
             break;
-        case "repeat_one": // if icon is repeat_one the change it to shuffle
+        case "repeat_one": //Se o ícone for repeat_one alter-o para shuffle
         repeatBtn.innerText = "shuffle";
-        repeatBtn.setAttribute("title", "Playback shuffle");
+        repeatBtn.setAttribute("title", "Reprodução aleatória");
             break;
-        case "shuffle": // if icon is repeat_one the change it to repeat
+        case "shuffle": //Se o ícone for repeat_one altere-o para repeat
         repeatBtn.innerText = "repeat";
         repeatBtn.setAttribute("title", "Repetir playlist");
             break;
     }
 });
 
+//Acima apenas mudamos o ícone, agora vamos trabalhar no que fazer
+//depois que a música acabou
 
+mainAudio.addEventListener("ended", ()=>{
+    //De acordo com o ícone significa que se o usuário configurou o ícone para repetir a música, repetiremos
+    //a música atual(current) e fará mais de acordo
+
+    let getText = repeatBtn.innerText; //obtendo innerText do ícone
+
+     //vamos fazer alterações diferentes em cliques de ícones diferentes usando o switch
+     switch(getText){
+        case "repeat": //se este ícone for repeat, simplesmente chamamos a função nextMusic para que a próxima música seja reproduzida
+            nextMusic();
+            break;
+        case "repeat_one": // se o ícone repeat_one então mudaremos o tempo atual para 0 para que a música toque desde o início
+            mainAudio.currentTime = 0;
+            loadMusic(musicIndex);
+            playMusic();//calling playMusic function
+            break;
+        case "shuffle": // se o ícone for repeat_one altere para repeat
+            //gerando índice aleatório entre o intervalo máximo de comprimento da matriz(array length)
+            let randIndex = Math.floor((Math.random()* allMusic.length) + 1);
+            do{
+                randIndex = Math.floor((Math.random()* allMusic.length) + 1);
+            }while(musicIndex == randIndex); //este loop é executado até que o próximo número aleatório não seja o mesmo do índice de música atual
+            musicIndex = randIndex;//passing ramdomIndex to musicIndex to musicIndex so the random song will play
+            loadMusic(musicIndex);//calling loadMusic function
+            playMusic();//calling playMusic function
+            break;
+    }
+});
+
+
+showMoreBtn.addEventListener("click", ()=>{
+    musicList.classList.toggle("show");
+});
+
+hideMusicBtn.addEventListener("click", ()=>{
+    showMoreBtn.click();
+});
+
+const ulTag  = wrapper.querySelector("ul");
+
+//vamos passar o nome da música, artista do array para li
+
+for (let i = 0; i<allMusic.length; i++){
+    //le'ts pass the song name, artist from the array to li 
+
+    let liTag = `<li>
+                  <div class="row">
+                    <span>${allMusic[i].name}</span>
+                    <p>${allMusic[i].artist}</p>
+                  </div>
+                  <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
+                  <span id="${allMusic[i].src}" class="audio-duration">7:57</span>
+                </li>`;
+    ulTag.insertAdjacentHTML("beforeend", liTag);
+
+    let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`);
+    let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
+
+    liAudioTag.addEventListener("loadeddata", ()=>{
+        let audioDuration = liAudioTag.duration;
+        let totalMin = Math.floor(audioDuration / 60);
+        let totalSec = Math.floor(audioDuration % 60);
+        if(totalSec <10){ // adding 0 if sec is less than 10
+        totalSec = `0${totalSec}`;
+    }
+    liAudioDuration.innerText = `${totalMin}:${totalSec}`;
+    });
+}
