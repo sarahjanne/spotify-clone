@@ -17,40 +17,46 @@
 // Coloque dentro da matris quantas músicas quiser, não precisa fazer mais nada
 
 let allMusic = [
-    {
-      name: "Liberta me de Mim",
-      artist: "Luma Elpidio",
-      img: "luma-3",
-      src: "Luma Elpídio-Liberta me de Mim"
-    },
-    {
-      name: "Na mesa",
-      artist: "Luma Elpidio",
-      img: "luma-6",
-      src: "Luma Elpidio-Na mesa"
-    },
-    {
-      name: "É bom saber",
-      artist: "Luma Elpidio",
-      img: "luma-1",
-      src: "Luma Elpidio-É bom saber"
-    },
-    {
-      name: "Te Entreguei Meu Coração",
-      artist: "Luma Elpidio",
-      img: "luma-5",
-      src: "Luma Elpidio-Te Entreguei Meu Coração"
-    },
-    {
-      name: "Teu Amor por mim",
-      artist: "Luma Elpidio",
-      img: "luma-4",
-      src: "Luma Elpidio-Teu Amor por mim"
-    },
-    {
-      name: "Venho a Ti",
-      artist: "Luma Elpidio",
-      img: "luma-2",
-      src: "Luma Elpidio-Venho a Ti"
-    },
-  ];
+  {
+    name: "Liberta-me de Mim",
+    artist: "Luma Elpidio",
+    img: "luma-3",
+    src: "music-1"
+    
+  },
+  {
+    name: "Na mesa",
+    artist: "Luma Elpidio",
+    img: "luma-6",
+    src: "music-2"
+   
+  },
+  {
+    name: "É bom saber",
+    artist: "Luma Elpidio",
+    img: "luma-1",
+    src: "music-3"
+   
+  },
+  {
+    name: "Te Entreguei Meu Coração",
+    artist: "Luma Elpidio",
+    img: "luma-5",
+    src: "music-4"
+    
+  },
+  {
+    name: "Teu Amor por mim",
+    artist: "Luma Elpidio",
+    img: "luma-4",
+    src: "music-5"
+ 
+  },
+  {
+    name: "Venho a Ti",
+    artist: "Luma Elpidio",
+    img: "luma-2",
+    src: "music-6"
+    
+  },
+];

@@ -9,19 +9,22 @@ playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
 nextBtn = wrapper.querySelector("#next"),
 progressArea = wrapper.querySelector(".progress-area"),
-progressBar = wrapper.querySelector(".progress-bar");
+progressBar = wrapper.querySelector(".progress-bar"),
 musicList = wrapper.querySelector(".music-list"),
-showMoreBtn = wrapper.querySelector("#more-music"),
-hideMusicBtn = musicList.querySelector("#close");
+liAudioTag = wrapper.querySelector("#audio-duration"),
+moreMusicBtn = wrapper.querySelector("#more-music"),
+closemoreMusic = musicList.querySelector("#close");
 
 
-let musicIndex = 2;
+let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
+isMusicPaused = true;
 
 window.addEventListener("load", ()=>{
-    loadMusic(musicIndex); //calling load music function once windows loaded
-})
+    loadMusic(musicIndex); //chamando a função load music assim que a janela(window) for carregado
+    playingSong(); 
+});
 
-//load music function
+// Função load music 
 function loadMusic(indexNumb){
     musicName.innerText = allMusic[indexNumb - 1].name;
     musicArtist.innerText = allMusic[indexNumb -1].artist;
@@ -29,116 +32,113 @@ function loadMusic(indexNumb){
     mainAudio.src = `./src/assets/songs/${allMusic[indexNumb - 1].src}.mp3`;
 }
 
-//play music function
+//Função play music 
 function playMusic(){
     wrapper.classList.add("paused");
     playPauseBtn.querySelector("i").innerText = "pause";
     mainAudio.play();
 }
 
-//pause music function
-
+//Função pause music 
 // Agora no segundo clique o isMusicPused retornará verdadeiro porque está pausado.
-// Aclasse é adcionada no wrapper para que a função chame o pauseMusic.
-
+// A classe é adcionada no wrapper para que a função chame o pauseMusic.
 function pauseMusic(){
     wrapper.classList.remove("paused");
     playPauseBtn.querySelector("i").innerText = "play_arrow";
     mainAudio.pause();
 }
 
-//next music function
-function nextMusic(){
-    //here we'll just increment of index by 1
-    musicIndex++;
 
-    //Se o musicIndex for maior que o array length, o musicIndex será 1 , então a primeira música será reproduzida
-
-    musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
-    loadMusic(musicIndex);
-    playMusic();
-}
-
-//prev music function
+//Função prev music
 function prevMusic(){
-    //here we'll just decrement of index by 1
+    //aqui vamos apenas decrementar o índice em 1
     musicIndex--;
-
     //Se o musicIndex for menor que 1, o musicIndex será 1 , então a última música do array length será reproduzida
-
     musicIndex < 1 ? musicIndex = allMusic.length  : musicIndex = musicIndex;
     loadMusic(musicIndex);
     playMusic();
+    playingSong(); 
 }
 
-//play or music button event
-playPauseBtn.addEventListener("click",()=>{
-    const isMusicPaused = wrapper.classList.contains("paused");
+//Função next music 
+function nextMusic(){
+    //aqui vamos apenas incrementar o índice em 1
+    musicIndex++;
+    //Se o musicIndex for maior que o array length, o musicIndex será 1 , então a primeira música será reproduzida
+    musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
+    loadMusic(musicIndex);
+    playMusic();
+    playingSong(); 
+}
+
+
+//evento de botão de reprodução ou música
 
 //Se isMusicPaused é true então interligue pauseMusic com playMusic, 
 // No primeiro clique, ele retornará flaso porque não há classe
 // pausada no wrapper, então a função de reprodução de música será chamada e add a classe
 // pausada dentro da função plauMusic
-
-    isMusicPaused ? pauseMusic() : playMusic();
+playPauseBtn.addEventListener("click",()=>{
+    const isMusicPlay = wrapper.classList.contains("paused");
+    isMusicPlay ? pauseMusic() : playMusic();
+    playingSong(); 
 });
+
+
+// prev music btn event
+prevBtn.addEventListener("click",()=>{
+    prevMusic(); //chamando a próxima função de música
+});
+
 
 // next music btn event
 nextBtn.addEventListener("click",()=>{
     nextMusic(); //calling next music function
 });
 
-// prev music btn event
-prevBtn.addEventListener("click",()=>{
-    prevMusic(); //calling next music function
-});
-
-
 //atualizar barra de progresso com de acordo com a música que está tocanto (atual)
 mainAudio.addEventListener("timeupdate", (e)=>{
-
 // console.log(e); ( usado para mostrar o "erro" que está retornando, no caso a falta do currentTime e duração do audio)
-const currentTime = e.target.currentTime; //obtendo a tempo atual da canção
-const duration = e.target.duration; //obtendo  duração total da canção
-let progressWidth = (currentTime / duration) * 100; 
-   progressBar.style.width = `${progressWidth}%`;
+    const currentTime = e.target.currentTime; //obtendo a tempo atual da canção
+    const duration = e.target.duration; //obtendo  duração total da canção
+    let progressWidth = (currentTime / duration) * 100; 
+    progressBar.style.width = `${progressWidth}%`;
 
         
-let musicCurrentTime = wrapper.querySelector(".current"),
-    musicDuration = wrapper.querySelector(".duration");
+    let musicCurrentTime = wrapper.querySelector(".current-time"),
+    musicDuration = wrapper.querySelector(".max-duration");
 
-mainAudio.addEventListener("loadeddata", ()=>{
-    //update song total duration
-    let audioDuration = mainAudio.duration;
-    let totalMin = Math.floor(audioDuration / 60);
-    let totalSec = Math.floor(audioDuration % 60);
-    if(totalSec <10){ // adding 0 if sec is less than 10
+    mainAudio.addEventListener("loadeddata", ()=>{
+//atualiza a duração total da música
+    let mainAdDuration = mainAudio.duration;
+    let totalMin = Math.floor(mainAdDuration / 60);
+    let totalSec = Math.floor(mainAdDuration % 60);
+    if(totalSec < 10){ //adicionando 0 se sec for menor que 10
         totalSec = `0${totalSec}`;
     }
     musicDuration.innerText = `${totalMin}:${totalSec}`;
 });
 
-    //update playing song current time
+//atualiza o horário atual da música que está sendo reproduzida
 let currentMin = Math.floor(currentTime / 60);
 let currentSec = Math.floor(currentTime % 60);
-if(currentSec <10){ // adding 0 if sec is less than 10
+if(currentSec < 10){ // adding 0 if sec is less than 10
     currentSec = `0${currentSec}`;
     }
     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
-   
 });
+
 
 //vamos atualizar o horário atual da música de acordo com a largura da barra de progresso
 
 progressArea.addEventListener("click", (e)=>{
-    let progressWidthval = progressArea.clientWidth; //obtendo largura da barra de progresso
+    let progressWidth = progressArea.clientWidth; //obtendo largura da barra de progresso
     let clickedOffSetX = e.offsetX; //obtendo offset x value
     let songDuration = mainAudio.duration; //obtendo duração total da música
 
-    mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
-    playMusic(); // se a música estiver pausada e o usuário clicar no progressBar 
-                //a música continuará tocando. Por isso o uso o play music no final.
-
+    mainAudio.currentTime = (clickedOffSetX / progressWidth) * songDuration;
+    playMusic();   // se a música estiver pausada e o usuário clicar no progressBar 
+    playingSong();  //a música continuará tocando. Por isso o uso o play music no final.
 });
 
 //vamos trabalhar na repetição, embaralhe a música de acordo com o ícone
@@ -182,57 +182,97 @@ mainAudio.addEventListener("ended", ()=>{
         case "repeat_one": // se o ícone repeat_one então mudaremos o tempo atual para 0 para que a música toque desde o início
             mainAudio.currentTime = 0;
             loadMusic(musicIndex);
-            playMusic();//calling playMusic function
+            playMusic();//chamando a função playMusic
             break;
         case "shuffle": // se o ícone for repeat_one altere para repeat
             //gerando índice aleatório entre o intervalo máximo de comprimento da matriz(array length)
-            let randIndex = Math.floor((Math.random()* allMusic.length) + 1);
+            let randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             do{
-                randIndex = Math.floor((Math.random()* allMusic.length) + 1);
+                randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             }while(musicIndex == randIndex); //este loop é executado até que o próximo número aleatório não seja o mesmo do índice de música atual
             musicIndex = randIndex;//passing ramdomIndex to musicIndex to musicIndex so the random song will play
             loadMusic(musicIndex);//calling loadMusic function
             playMusic();//calling playMusic function
+            playingSong();
             break;
     }
 });
 
 
-showMoreBtn.addEventListener("click", ()=>{
+moreMusicBtn.addEventListener("click", ()=>{
     musicList.classList.toggle("show");
 });
 
-hideMusicBtn.addEventListener("click", ()=>{
-    showMoreBtn.click();
+closemoreMusic.addEventListener("click", ()=>{
+    moreMusicBtn.click();
 });
+
+
 
 const ulTag  = wrapper.querySelector("ul");
 
 //vamos passar o nome da música, artista do array para li
 
-for (let i = 0; i<allMusic.length; i++){
-    //le'ts pass the song name, artist from the array to li 
+for (let i = 0; i < allMusic.length; i++) {
+  //let's pass the song name, artist from the array
 
-    let liTag = `<li>
-                  <div class="row">
+
+  let liTag = `<li li-index="${i + 1}">
+                <div class="row">
                     <span>${allMusic[i].name}</span>
                     <p>${allMusic[i].artist}</p>
-                  </div>
-                  <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
-                  <span id="${allMusic[i].src}" class="audio-duration">7:57</span>
+                </div>
+                <span id="${allMusic[i].src}" class="audio-duration">3:40</span>
+                <audio class="${allMusic[i].src}" src="./src/assets/songs/${allMusic[i].src}.mp3"></audio>
                 </li>`;
-    ulTag.insertAdjacentHTML("beforeend", liTag);
 
-    let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`);
-    let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
+            ulTag.insertAdjacentHTML("beforeend", liTag);
 
-    liAudioTag.addEventListener("loadeddata", ()=>{
-        let audioDuration = liAudioTag.duration;
-        let totalMin = Math.floor(audioDuration / 60);
-        let totalSec = Math.floor(audioDuration % 60);
-        if(totalSec <10){ // adding 0 if sec is less than 10
-        totalSec = `0${totalSec}`;
+            let liAudioDuartionTag = ulTag.querySelector(`#${allMusic[i].src}`);
+            let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
+  
+            liAudioTag.addEventListener("loadeddata", ()=>{
+                let duration = liAudioTag.duration;
+                let totalMin = Math.floor(duration / 60);
+                let totalSec = Math.floor(duration % 60);
+                if(totalSec < 10){ //se sec for menor que 10 então adicione 0 antes dele
+                totalSec = `0${totalSec}`;
+                };
+                liAudioDuartionTag.innerText = `${totalMin}:${totalSec}`; //passando a duração total da música
+                liAudioDuartionTag.setAttribute("t-duration", `${totalMin}:${totalSec}`); //adicionando o atributo t-duration com o valor da duração total
+            });
+            
+                        
+            }
+                
+//toca uma música específica da lista onclick da tag li
+function playingSong(){
+    const allLiTag = ulTag.querySelectorAll("li");
+    
+    for (let j = 0; j < allLiTag.length; j++) {
+      let audioTag = allLiTag[j].querySelector(".audio-duration");
+      
+      if(allLiTag[j].classList.contains("playing")){
+        allLiTag[j].classList.remove("playing");
+        let adDuration = audioTag.getAttribute("t-duration");
+        audioTag.innerText = adDuration;
+      }
+  
+      //se o índice da tag li for igual ao musicIndex então adicione a classe de reprodução nele
+      if(allLiTag[j].getAttribute("li-index") == musicIndex){
+        allLiTag[j].classList.add("playing");
+        audioTag.innerText = "Playing";
+      }
+  
+      allLiTag[j].setAttribute("onclick", "clicked(this)");
     }
-    liAudioDuration.innerText = `${totalMin}:${totalSec}`;
-    });
-}
+  }
+  
+  //função li clicada específica
+  function clicked(element){
+    let getLiIndex = element.getAttribute("li-index");
+    musicIndex = getLiIndex; //atualizando o índice da música atual com o índice li clicado
+    loadMusic(musicIndex);
+    playMusic();
+    playingSong();
+  }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel ="stylesheet" href="./src/styles/music-player.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
 
     <div class="wrapper">
@@ -21,20 +23,20 @@
         </div>
 
         <div class="song-details">
-            <p class="name">É bom saber</p>
-            <p class="artist">Luma Elpidio</p>
+            <p class="name"></p>
+            <p class="artist"></p>
         </div>
 
         <div class="progress-area">
             <div class="progress-bar"></div>
+            <audio id="main-audio" src=""></audio>
 
-            <div class="timer">
-                <span class="current">0:00</span>
-                <span class="duration"></span>
+            <div class="song-timer">
+                <span class="current-time">0:00</span>
+                <span class="max-duration">0:00</span>
             </div>
         </div>
         
-        <audio id="main-audio" src=""></audio>
 
         <div class="controls">
             <i id="repeat-plist" class="material-icons" title="Repetir playlist ">repeat</i>
@@ -49,21 +51,21 @@
         <div class="music-list">
             <div class="header">
                 <div class="row">
-                    <i class="material-icons">queue_music</i>
+                    <i class="list material-icons">queue_music</i>
                     <span>Music list</span>
                 </div>
                 <i id="close" class="material-icons">close</i>
                 
             </div>
             <ul>
-                
-             </ul>
+                <!-- Aqui o li , lista com js -->
+            </ul>
         </div>
        
     </div>
     
-    <script src="music-list.js"></script>
-    <script src="music-script.js"></script>
+    <script src="music-list.js" type="text/javascript"></script>
+    <script src="music-script.js" type="text/javascript"></script>
 
 </body>
 </html>
