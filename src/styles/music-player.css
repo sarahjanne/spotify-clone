@@ -10,8 +10,7 @@
     margin: 0;
   }
 :root{
-  --pink: #ff74a4;
-  --violet: #9f6ea3;
+  --green: #42ac6b;
   --lightblack: #515C6F;
   --white: #ffffff;
   --darkwhite: #cecaca;
@@ -19,20 +18,23 @@
   --lightbshadow: rgba(0,0,0,0.15);
 }
 body{
-    display: flex;
+    display: inline-block;
     align-items: center;
     justify-content:center;
-    min-height: 100vh;
-   
+    max-width: 80vw;
+    height: 100vh;
+    margin-top: 12px;
+    margin-left: 320px;
+    margin-right: 56px;
 }
 .wrapper{
-    width: 90vh;
-    height: 90vh;
+    position: fixed;
+    width: 147vh;
+    height: 93vh;
     overflow: hidden;
     padding: 25px 30px;
-    position:relative;
     border-radius: 15px;
-    background: var(--white);
+    background:  #121212;
     box-shadow: 0px 6px 15px var(--lightbshadow);
     
 }
@@ -59,7 +61,7 @@ body{
 }
 .img-area{
     width: 100%;
-    height: 256px;
+    height: 392px;
     overflow: hidden;
     margin-top: 25px;
     border-radius: 15px;
@@ -98,7 +100,7 @@ body{
     width: 0%;
     position:relative;
     border-radius: inherit;
-    background:linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
+    background:linear-gradient(90deg, var(--green) 0%, var(--green) 100%);
 }
 .progress-bar::before{
     content: "";
@@ -127,25 +129,26 @@ body{
     color: var(--lightblack);
 }
 .controls{
-    margin: 40px 0 5px 0;
+    margin: 50px 0 5px 0;
+
 }
 .controls i{
 font-size: 28px;
 user-select: none;
-background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+background: linear-gradient(var(--green) 0%, var(--green) 100%);
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
 .controls i:nth-child(2),
 .controls i:nth-child(4){
-  font-size: 43px;
+  font-size: 50px;
 }
 .controls #prev{
-  margin-right: -13px;
+  margin-right: -9px;
 }
 .controls #next{
-  margin-left: -13px;
+  margin-left: -9px;
 }
 .controls .play-pause{
   height: 54px;
@@ -155,8 +158,8 @@ background-clip: text;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
-  box-shadow: 0px 0px 5px var(--pink);
+  background: #faf9f9;
+  box-shadow: 0px 0px 3px var(--green);
 }
 .play-pause::before{
     content: "";
@@ -164,7 +167,7 @@ background-clip: text;
     height: 43px;
     width: 43px;
     border-radius: inherit;
-    background:linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    background:linear-gradient(var(--green) 0%, var(--green) 100%);
 }
 
 .play-pause i{
@@ -185,7 +188,7 @@ background-clip: text;
     bottom:-51%;
     opacity: 0;
     pointer-events: none ;
-    width: 380px;
+    width: 147vh;
     padding: 15px 30px 0;
     border-radius: 15px;
     background: var(--white);
