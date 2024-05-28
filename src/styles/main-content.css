@@ -354,6 +354,7 @@ border-radius: 100%;
 font-size: 14px;
 opacity: 0;
 transition: all ease 0.4s;
+text-decoration: none;
 }
 
 .artist-card:hover .play .fa-play {
