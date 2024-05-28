@@ -359,12 +359,16 @@ transition: all ease 0.4s;
 .artist-card:hover .play .fa-play {
 opacity: 1;
 transform: translateY(-20px);
+text-decoration: none;
 }
 
 .play .fa-play:hover {
 padding: 20px;
 cursor: pointer;
+text-decoration: none;
 }
+
+
 
 #result-artist {
 padding: 20px 40px;
