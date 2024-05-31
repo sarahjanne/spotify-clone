@@ -181,7 +181,7 @@ margin-bottom: 16px;
 /* CODIGO COM JS CALCULANDO OS CARDS POR COLUNA */
 display: grid;
 gap: 16px;
-grid-gap: 32px;
+grid-gap: 10px;
 margin: 0 auto;
 }
 
@@ -369,9 +369,8 @@ cursor: pointer;
 text-decoration: none;
 }
 
-
-
 #result-artist {
 padding: 20px 40px;
 }
 /* FIM CARD ARTISTA */
+

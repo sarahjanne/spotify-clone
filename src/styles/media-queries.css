@@ -3,3 +3,62 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/* sidebar-footer */
+@media (max-width: 430px) {
+  .sidebar {
+   width: 160px;
+  }
+  .languages .languages__button{
+      width: 134px;
+  }
+  .sidebar .cookies a{
+      text-decoration: none;
+      padding: 1px;
+      
+  }
+  .disclaimer-premium{
+      width: 100%;
+  }
+  .disclaimer-premium button {
+   margin-right: 50px;
+  }
+}
+/* main-content */
+@media (max-width: 430px) {
+  .main-container{
+    margin-left: 190px;
+  }
+  .playlist-container {
+    width: 700px;
+    height: 112vh;
+  }
+  .header__navigation{
+    width:  680px;
+    margin-top: 10px;
+  }
+  .offer__list{
+    width: 560px;
+  }
+  .offer__list-item{
+    grid-gap: 15px;
+  }
+  .offer__scroll-container {
+    max-height: 75vh;
+    }
+}
+@media (max-width: 1024px) {
+  
+  .header__search {
+   width: 250px;
+  }
+  .playlist-container {
+    height: 53vh;
+  }
+  .offer__scroll-container {
+    max-height: 35vh;
+    margin-right: 10px;
+    }
+  .header__login .subscribe{
+    margin: 9px;
+  }
+}
